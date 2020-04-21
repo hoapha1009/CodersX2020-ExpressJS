@@ -7,6 +7,14 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const url = require('url');
+const low = require('lowdb');
+const FileSync = require('lowdb/adapters/FileSync');
+
+const adapter = new FileSync('db.json');
+const db = low(adapter);
+
+db.defaults({ todosList: [] })
+  .write();
 
 //Use pug template engine
 app.set("views", "./views");
@@ -29,13 +37,13 @@ app.get("/", (request, response) => {
 
 //Render route todos with pug
 app.get("/todos", (req, res) =>
-  res.render("todos/index", { todosList: todosList })
+  res.render("todos/index", { todosList: db.get('todosList').value() })
 );
 
 //Search in route todos by query para
 app.get("/todos/search", (req, res) => {
   var q = req.query.q;
-  var matchedTodos = todosList.filter(function(todo) {
+  var matchedTodos = db.get('todosList').value().filter(function(todo) {
     return todo.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
   });
 
@@ -48,7 +56,7 @@ app.get('/todos/create', (req, res) => {
 });
 
 app.post('/todos/create', (req, res) => {
-  todosList.push(req.body);
+  db.get('todosList').value().push(req.body);
   res.redirect('back');
 });
 
