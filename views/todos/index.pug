@@ -4,6 +4,11 @@ form(action="/todos/search", method="GET")
   input( type="text", name="q", value= inputValue )
   button Search 
 
+form(action="/todos/create", method="POST")
+  label New Todo <br>
+  input( type="text", name="todo" )
+  button Create 
+
 ul
   each todo in todosList
-    li= todo.name
+    li= todo.name ? todo.name : todo.todo
