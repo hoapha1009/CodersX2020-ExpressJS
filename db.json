@@ -1,0 +1,16 @@
+{
+  "todosList": [
+    {
+      "name": "Đi chợ"
+    },
+    {
+      "name": "Nấu ăn"
+    },
+    {
+      "name": "Rửa chén"
+    },
+    {
+      "name": "Học code tại CodersX"
+    }
+  ]
+}
