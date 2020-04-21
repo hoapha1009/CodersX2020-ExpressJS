@@ -1,6 +1,9 @@
 h1 Todo List
+
+form(action="/todos/search", method="GET")
+  input( type="text", name="q", value= inputValue )
+  button Search 
+
 ul
-  li Đi chợ
-  li Nấu cơm
-  li Rửa bát
-  li Học code tại CodersX
+  each todo in todosList
+    li= todo.name
