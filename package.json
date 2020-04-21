@@ -1,0 +1,22 @@
+{
+  "name": "codersx2020-expressjs",
+  "version": "1.0.0",
+  "description": "Exercises of Main course of CodersX 2020",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoapha1009/CodersX2020-ExpressJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoapha1009/CodersX2020-ExpressJS/issues"
+  },
+  "homepage": "https://github.com/hoapha1009/CodersX2020-ExpressJS#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
