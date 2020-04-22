@@ -11,4 +11,6 @@ form(action="/todos/create", method="POST")
 
 ul
   each todo in todosList
-    li= todo.name ? todo.name : todo.todo
+    li= todo.name ? todo.name : todo.todo ? todo.todo : todo.text 
+      span &nbsp;
+      a(href="todos/" + todo.id + "/delete") Xóa

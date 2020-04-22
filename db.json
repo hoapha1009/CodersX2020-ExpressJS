@@ -1,15 +1,15 @@
 {
   "todosList": [
     {
+      "id": 2,
       "name": "Đi chợ"
     },
     {
+      "id": 3,
       "name": "Nấu ăn"
     },
     {
-      "name": "Rửa chén"
-    },
-    {
+      "id": 5,
       "name": "Học code tại CodersX"
     }
   ]
