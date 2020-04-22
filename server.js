@@ -45,6 +45,14 @@ app.get('/todos/create', (req, res) => {
   res.render('todos/create'); 
 });
 
+app.get('/todos/:id/delete', (req, res) => {
+  var id = parseInt(req.params.id);
+  
+  db.get('todosList').remove({ id: id }).write();
+  
+  res.redirect('back');
+});
+
 app.post('/todos/create', (req, res) => {
   db.get('todosList').push(req.body).write();
   res.redirect('back');
