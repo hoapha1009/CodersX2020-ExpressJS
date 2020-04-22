@@ -1,0 +1,41 @@
+h1 Book management
+
+div(style="color: blue")
+    h2 Book list
+  
+table(style="width: 400px; text-align: center")
+  tr
+    th Title
+    th Description
+    th Update title
+    th Delete
+  each book in books
+    tr
+      td= book.title
+      td= book.description
+      td 
+        a(href="/books/" + book.id + "/update") Click
+      td 
+        a(href="/books/" + book.id + "/delete") Click
+        
+div(style="color: green") 
+    h3 Add new book
+      
+    form(action="/books", method="post")
+      table
+        tr
+          td 
+            label Title:
+          td 
+            input(type="text", name="title") 
+        tr
+          td
+              label Description:
+          td  
+              input(type="text", name="description") 
+        tr
+          td
+          td
+            button(type="submit") Add
+      
+    
