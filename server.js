@@ -1,61 +1,66 @@
 const express = require("express");
-const app = express();
-const bodyParser = require('body-parser');
-const url = require('url');
-const low = require('lowdb');
-const FileSync = require('lowdb/adapters/FileSync');
+const bodyParser = require("body-parser");
+const low = require("lowdb");
+const FileSync = require("lowdb/adapters/FileSync");
+const shortid = require("shortid");
 
-const adapter = new FileSync('db.json');
+const app = express();
+const adapter = new FileSync("db.json");
 const db = low(adapter);
 
-db.defaults({ todosList: [] })
-  .write();
+db.defaults({ books: [] }).write();
 
-app.set("views", "./views");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.set("view engine", "pug");
+app.set("views", "./views");
 
-app.use(express.json()) 
-app.use(express.urlencoded({ extended: true })) 
-
-var todosList = [
-  { name: "Đi chợ" },
-  { name: "Nấu cơm" },
-  { name: "Rửa bát" },
-  { name: "Học code tại CodersX" }
-];
-
-app.get("/", (request, response) => {
-  response.render('index');
+// Render  views index
+app.get('/', (req, res) => {
+  res.render('./index');
 });
 
-app.get("/todos", (req, res) =>
-  res.render("todos/index", { todosList: db.get('todosList').value() })
-);
-
-app.get("/todos/search", (req, res) => {
-  var q = req.query.q;
-  var matchedTodos = db.get('todosList').value().filter(function(todo) {
-    return todo.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+// Render books index
+app.get('/books', (req, res) => {
+  res.render('./books', {
+    books: db.get('books').value()
   });
-
-  res.render("todos/index", { todosList: matchedTodos, inputValue: q });
 });
 
-app.get('/todos/create', (req, res) => {
-  res.render('todos/create'); 
+// Update title
+app.get('/books/:id/update', (req, res) => {
+  var id = req.params.id;
+  res.render("./books/update-title", {
+    id: id
+  });
 });
 
-app.get('/todos/:id/delete', (req, res) => {
-  var id = parseInt(req.params.id);
-  
-  db.get('todosList').remove({ id: id }).write();
-  
-  res.redirect('back');
+app.post("/books/update", (req, res) => {
+  db.get("books")
+    .find({ id: req.body.id })
+    .assign({ title: req.body.title })
+    .write();
+  res.redirect("/books");
 });
 
-app.post('/todos/create', (req, res) => {
-  db.get('todosList').push(req.body).write();
-  res.redirect('back');
+//Delete
+app.get("/books/:id/delete", (req, res) => {
+  var id = req.params.id;
+  db.get("books")
+    .remove({ id: id })
+    .write();
+  res.redirect("back");
+});
+
+// Add new book
+app.post("/books", (req, res) => {
+  req.body.id = shortid.generate();
+
+  db.get("books")
+    .push(req.body)
+    .write();
+  res.redirect("back");
 });
 
 app.listen(process.env.PORT, () => {
