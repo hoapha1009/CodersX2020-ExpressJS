@@ -18,14 +18,9 @@ router.get("/:trans_id/delete", controller.delete);
 // Create new transaction
 router.get("/create", controller.create);
 
-router.post("/create", (req, res) => {
-  req.body.trans_id = shortid.generate();
+router.post("/create", controller.postCreate);
 
-  db.get("transactions")
-    .push(req.body)
-    .write();
-
-  res.redirect("/transactions");
-});
+// Give book back
+router.get("/:trans_id/complete", controller.isComplete);
 
 module.exports = router;
