@@ -18,7 +18,8 @@ module.exports.create = (req, res) => {
 
 module.exports.postCreate = (req, res) => {
   req.body.trans_id = shortid.generate();
-
+  req.body.isComplete = false;
+  
   db.get("transactions")
     .push(req.body)
     .write();
@@ -31,4 +32,12 @@ module.exports.delete = (req, res) => {
     .remove({ trans_id: req.params.trans_id })
     .write();
   res.redirect("back");
+};
+
+module.exports.isComplete = (req, res) => {
+  db.get('transactions')
+    .find({ trans_id: req.params.trans_id })
+    .assign( { isComplete: true } )
+    .write();
+  res.redirect('/transactions');
 };
