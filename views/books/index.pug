@@ -1,41 +1,43 @@
-h1 Book management
+extends ../layouts/common
+block content
+  h1 Book management
 
-div(style="color: blue")
-    h2 Book list
-  
-table(style="width: 400px; text-align: left")
-  tr
-    th Title
-    th Description
-    th Update title
-    th Delete
-  each book in books
+  div(style="color: blue")
+      h2 Book list
+
+  table.table(style="text-align: left")
     tr
-      td= book.title
-      td= book.description
-      td 
-        a(href="/books/" + book.book_id + "/update") Click
-      td 
-        a(href="/books/" + book.book_id + "/delete") Click
-        
-div(style="color: green") 
-    h3 Add new book
-      
-    form(action="/books", method="post")
-      table
-        tr
-          td 
-            label Title:
-          td 
-            input(type="text", name="title") 
-        tr
-          td
-              label Description:
-          td  
-              input(type="text", name="description") 
-        tr
-          td
-          td
-            button(type="submit") Add
-      
-    
+      th Title
+      th Description
+      th Update title
+      th Delete
+    each book in books
+      tr
+        td= book.title
+        td= book.description
+        td 
+          a(href="/books/" + book.book_id + "/update") Click
+        td 
+          a(href="/books/" + book.book_id + "/delete") Click
+
+  div(style="color: green") 
+      h3 Add new book
+
+      form.form(action="/books", method="post")
+        table
+          tr
+            td 
+              label Title:
+            td 
+              input.form-control(type="text", name="title") 
+          tr
+            td
+                label Description:
+            td  
+                input.form-control(type="text", name="description") 
+          tr
+            td
+            td
+              button.btn.btn-primary(type="submit") Add
+
+

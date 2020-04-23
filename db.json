@@ -68,7 +68,8 @@
       "user_id": "u01",
       "book_id": "Z8QcCquvq",
       "trans_id": "7IMWyNOKN",
-      "isComplete ": false
+      "isComplete ": false,
+      "isComplete": true
     },
     {
       "user_id": "u05",
