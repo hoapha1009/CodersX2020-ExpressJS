@@ -8,15 +8,15 @@ div(style="color: green")
             label User ID:
           td 
             select#userid_select(name="user_id")
-              each trans in transactions
-                option= trans.user_id
+              each user in users
+                option= user.user_id
         tr
           td
               label Book ID:
           td  
               select#bookid_select(name="book_id")
-                each trans in transactions
-                  option= trans.book_id 
+                each book in books
+                  option= book.book_id 
         tr
           td
           td

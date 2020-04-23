@@ -24,11 +24,6 @@
       "title": "Engrisk",
       "description": "English",
       "book_id": "hZ-OvkGur"
-    },
-    {
-      "title": "dfdf",
-      "description": "3434",
-      "book_id": "CZFiqCFFQ"
     }
   ],
   "users": [
@@ -59,6 +54,11 @@
       "trans_id": "t01",
       "book_id": "css02",
       "user_id": "u01"
+    },
+    {
+      "user_id": "u01",
+      "book_id": "css02",
+      "trans_id": "J7qqwf8x5"
     }
   ]
 }

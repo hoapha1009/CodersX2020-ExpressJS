@@ -4,47 +4,22 @@ const bodyParser = require("body-parser");
 const shortid = require("shortid");
 
 const db = require('../db');
+const controller = require('../controllers/users.controller');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 // Render user web
-router.get('/', (req, res) => {
-  res.render('./users/index', {
-    users: db.get('users').value()
-  });
-});
+router.get('/', controller.index);
 
 // Add new user
-router.post('/', (req, res) => {
-  req.body.user_id = shortid.generate();
-  
-  db.get('users')
-    .push(req.body)
-    .write();
-  res.redirect('back');
-})
+router.post('/', controller.create);
 
 // Change username
-router.get('/:user_id/changename', (req, res) => {
-  res.render('./users/change-name', {
-    user_id: req.params.user_id
-  });
-});
-router.post('/changename', (req, res) => {
-  db.get('users')
-    .find({ user_id: req.body.user_id })
-    .assign({ name: req.body.name })
-    .write();
-  res.redirect('/users');
-});
+router.get('/:user_id/changename', controller.changeName);
+router.post('/changename', controller.postChangeName);
 
 // Delete user
-router.get('/:user_id/delete', (req, res) => {
-  db.get('users')
-    .remove({ user_id: req.params.user_id })
-    .write();
-  res.redirect('back');
-});
+router.get('/:user_id/delete', controller.delete);
 
 module.exports = router;
