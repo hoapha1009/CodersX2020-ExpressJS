@@ -1,0 +1,23 @@
+div(style="color: green") 
+    h3 Add new transaction
+      
+    form(action="", method="post")
+      table
+        tr
+          td 
+            label User ID:
+          td 
+            select#userid_select(name="user_id")
+              each trans in transactions
+                option= trans.user_id
+        tr
+          td
+              label Book ID:
+          td  
+              select#bookid_select(name="book_id")
+                each trans in transactions
+                  option= trans.book_id 
+        tr
+          td
+          td
+            button(type="submit") Add

@@ -8,12 +8,12 @@ table(style="width: 400px; text-align: left;")
     th Delete
   each user in users  
     tr
-      td= user.id
+      td= user.user_id
       td= user.name
       td
-        a(href="/users/" + user.id + "/changename") Click
+        a(href="/users/" + user.user_id + "/changename") Click
       td
-        a(href="/users/" + user.id + "/delete") Click
+        a(href="/users/" + user.user_id + "/delete") Click
         
 h2(style="color: orange") Add new user
 form(action="/users", method="post")

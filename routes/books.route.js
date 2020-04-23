@@ -16,33 +16,33 @@ router.get('/', (req, res) => {
 });
 
 // Update title
-router.get('/:id/update', (req, res) => {
+router.get('/:book_id/update', (req, res) => {
   res.render("./books/update-title", {
-    id: req.params.id
+    book_id: req.params.book_id
   });
 });
 
 router.post("/update", (req, res) => {
   db.get("books")
-    .find({ id: req.body.id })
+    .find({ book_id: req.body.book_id })
     .assign({ title: req.body.title })
     .write();
   res.redirect("/books");
 });
 
 //Delete
-router.get("/:id/delete", (req, res) => {
-  var id = req.params.id;
+router.get("/:book_id/delete", (req, res) => {
+  var book_id = req.params.book_id;
   db.get("books")
-    .remove({ id: id })
+    .remove({ book_id: book_id })
     .write();
   res.redirect("back");
 });
 
 // Add new book
 router.post("/", (req, res) => {
-  req.body.id = shortid.generate();
-  console.log(req.body.id);
+  req.body.book_id = shortid.generate();
+  console.log(req.body.book_id);
   db.get("books")
     .push(req.body)
     .write();
