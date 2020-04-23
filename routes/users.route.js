@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
 // Add new user
 router.post('/', (req, res) => {
-  req.body.id = shortid.generate();
+  req.body.user_id = shortid.generate();
   
   db.get('users')
     .push(req.body)
@@ -26,23 +26,23 @@ router.post('/', (req, res) => {
 })
 
 // Change username
-router.get('/:id/changename', (req, res) => {
+router.get('/:user_id/changename', (req, res) => {
   res.render('./users/change-name', {
-    id: req.params.id
+    user_id: req.params.user_id
   });
 });
 router.post('/changename', (req, res) => {
   db.get('users')
-    .find({ id: req.body.id })
+    .find({ user_id: req.body.user_id })
     .assign({ name: req.body.name })
     .write();
   res.redirect('/users');
 });
 
 // Delete user
-router.get('/:id/delete', (req, res) => {
+router.get('/:user_id/delete', (req, res) => {
   db.get('users')
-    .remove({ id: req.params.id })
+    .remove({ user_id: req.params.user_id })
     .write();
   res.redirect('back');
 });

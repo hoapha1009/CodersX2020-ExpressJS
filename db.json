@@ -1,52 +1,64 @@
 {
   "books": [
     {
-      "id": "html01",
+      "book_id": "html01",
       "title": "HTML",
       "description": "HTML the best"
     },
     {
-      "id": "css02",
+      "book_id": "css02",
       "title": "CSS",
       "description": "CSS the best"
     },
     {
-      "id": "Z8QcCquvq",
+      "book_id": "Z8QcCquvq",
       "title": "Javascript",
       "description": "Javascript the best"
     },
     {
-      "id": "Z8QtCquvq",
+      "book_id": "Z8QtCquvq",
       "title": "Bootstrap",
       "description": "Bootstrap the second"
     },
     {
       "title": "Engrisk",
       "description": "English",
-      "id": "hZ-OvkGur"
+      "book_id": "hZ-OvkGur"
     },
     {
       "title": "dfdf",
       "description": "3434",
-      "id": "CZFiqCFFQ"
+      "book_id": "CZFiqCFFQ"
     }
   ],
   "users": [
     {
-      "id": "u01",
+      "user_id": "u01",
       "name": "Phạm Minh Hoàng"
     },
     {
-      "id": "u03",
+      "user_id": "u03",
       "name": "Phạm Thị Tú Uyên"
     },
     {
-      "id": "u04",
+      "user_id": "u04",
       "name": "Nguyễn Quỳnh Hương Giang"
     },
     {
-      "id": "u05",
-      "name": "Chi pu"
+      "user_id": "u05",
+      "name": "chipucu"
+    }
+  ],
+  "transactions": [
+    {
+      "trans_id": "t01",
+      "book_id": "html01",
+      "user_id": "u01"
+    },
+    {
+      "trans_id": "t01",
+      "book_id": "css02",
+      "user_id": "u01"
     }
   ]
 }
