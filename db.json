@@ -53,30 +53,30 @@
       "trans_id": "t01",
       "book_id": "html01",
       "user_id": "u01",
-      "isComplete": false
-    },
-    {
-      "trans_id": "t01",
-      "book_id": "css02",
-      "user_id": "u01",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "user_id": "u01",
       "book_id": "css02",
       "trans_id": "J7qqwf8x5",
-      "isComplete": true
+      "isComplete": false
     },
     {
       "user_id": "u01",
       "book_id": "Z8QcCquvq",
       "trans_id": "7IMWyNOKN",
-      "isComplete": true
+      "isComplete": false
     },
     {
-      "user_id": "u05",
+      "user_id": "u01",
       "book_id": "Z8QtCquvq",
-      "trans_id": "fQP-GKgAp",
+      "trans_id": "K3D7Lc4aL",
+      "isComplete": false
+    },
+    {
+      "user_id": "u01",
+      "book_id": "hZ-OvkGur",
+      "trans_id": "z4hoIm-yz",
       "isComplete": true
     }
   ]
