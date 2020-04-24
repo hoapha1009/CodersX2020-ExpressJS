@@ -35,9 +35,19 @@ module.exports.delete = (req, res) => {
 };
 
 module.exports.isComplete = (req, res) => {
-  db.get('transactions')
-    .find({ trans_id: req.params.trans_id })
-    .assign( { isComplete: true } )
-    .write();
-  res.redirect('/transactions');
+  var trans_id = req.params.trans_id;
+  var trans = db.get('transactions')
+                .value();
+  var matchedTrans = trans.filter(tran => tran.trans_id.indexOf(trans_id) !== -1);
+  if(matchedTrans.length) {
+    db.get('transactions')
+      .find({ trans_id: trans_id })
+      .assign( { isComplete: true } )
+      .write();
+    res.redirect('/transactions');
+  }
+  else {
+    res.redirect('/transactions');
+    return;
+  }
 };
