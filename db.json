@@ -49,7 +49,7 @@
       "trans_id": "t01",
       "book_id": "html01",
       "user_id": "u01",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "trans_id": "t01",
@@ -73,7 +73,7 @@
       "user_id": "u05",
       "book_id": "Z8QtCquvq",
       "trans_id": "fQP-GKgAp",
-      "isComplete": true
+      "isComplete": false
     }
   ]
 }
