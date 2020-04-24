@@ -9,17 +9,7 @@ module.exports.index = (req, res) => {
 
 module.exports.create = (req, res) => {
   req.body.user_id = shortid.generate();
-  var username = req.body.name;
-  if( username.length > 30 ){
-    var error = "Password không được dài quá 30 ký tự!";
-  }
-  if(error){
-    res.render('./users/index', {
-      users: db.get('users').value(),
-      error: error
-    });
-    return;
-  }
+  
   db.get('users')
     .push(req.body)
     .write();
