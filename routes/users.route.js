@@ -5,6 +5,7 @@ const shortid = require("shortid");
 
 const db = require('../db');
 const controller = require('../controllers/users.controller');
+const validate = require('../validate/user.validate.js');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -13,7 +14,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.get('/', controller.index);
 
 // Add new user
-router.post('/', controller.create);
+router.post('/', validate.create, controller.create);
 
 // Change username
 router.get('/:user_id/changename', controller.changeName);

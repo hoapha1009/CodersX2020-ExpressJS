@@ -1,8 +1,9 @@
-h1 Update new title
-form(action="/books/update", method="post")
-  label New title:
-  br  
-  input(type="text", hidden, name="book_id", value=book_id)
-  input(type="text", name="title") 
-  button Update
-  
+extends ../layouts/common
+block content
+  h1 Update new title
+  form.form(action="/books/update", method="post")
+    label(for="title") New title:
+    br  
+    input.form-control(type="text", hidden, name="book_id", value=book_id)
+    input.form-control#title(type="text", name="title") 
+    button.btn.btn-submit Update
