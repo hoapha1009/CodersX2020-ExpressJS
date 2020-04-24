@@ -5,7 +5,8 @@ const db = require('../db');
 module.exports.index = (req, res) => {
   res.render('./users/index', {
     users: db.get('users').value()
-})};
+  });
+};
 
 module.exports.create = (req, res) => {
   req.body.user_id = shortid.generate();

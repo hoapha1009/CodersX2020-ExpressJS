@@ -5,12 +5,13 @@ const shortid = require("shortid");
 
 const db = require('../db');
 const controller = require('../controllers/books.controller');
+const countCookie = require('../middlewares/count-cookie.middleware');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 // Render books index
-router.get('/', controller.index);
+router.get('/', countCookie.countCookie, controller.index);
 
 // Update title
 router.get('/:book_id/update', controller.updateTitle);
