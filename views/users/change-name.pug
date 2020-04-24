@@ -2,9 +2,9 @@ extends ../layouts/common
 block content
   h1 Change name
   form.form(action="/users/changename", method="post")
-    label New name:
+    label(for="name") New name:
     br
     input.form-control(type="text", hidden, name="user_id", value=user_id)
-    input.form-control(type="text", name="name")
+    input.form-control#name(type="text", name="name")
     br
     button.btn.btn-primary(type="submit") Change

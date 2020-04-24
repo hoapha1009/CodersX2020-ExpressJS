@@ -19,9 +19,9 @@ block content
 
   h2(style="color: orange") Add new user
   form.form(action="/users", method="post")
-    label Enter name:
+    label(for="name") Enter name:
     br
-    input(type="text", name="name")
+    input#name(type="text", name="name")
     br
     button.btn.btn-primary Add
 
