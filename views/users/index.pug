@@ -1,27 +1,26 @@
-extends ../layouts/common
-block content
-  h1(style="color: blue") User Management (CRUD)
-  h2(style="color: green") User list
-  table.table(style="text-align: left;")
+h1(style="color: blue") User Management (CRUD)
+h2(style="color: green") User list
+table(style="width: 400px; text-align: left;")
+  tr
+    th User ID
+    th Name
+    th Change username
+    th Delete
+  each user in users  
     tr
-      th User ID
-      th Name
-      th Change username
-      th Delete
-    each user in users  
-      tr
-        td= user.user_id
-        td= user.name
-        td
-          a(href="/users/" + user.user_id + "/changename") Click
-        td
-          a(href="/users/" + user.user_id + "/delete") Click
+      td= user.user_id
+      td= user.name
+      td
+        a(href="/users/" + user.user_id + "/changename") Click
+      td
+        a(href="/users/" + user.user_id + "/delete") Click
+        
+h2(style="color: orange") Add new user
+form(action="/users", method="post")
+  label Enter name:
+  br
+  input(type="text", name="name")
+  br
+  button Add
 
-  h2(style="color: orange") Add new user
-  form.form(action="/users", method="post")
-    label Enter name:
-    br
-    input(type="text", name="name")
-    br
-    button.btn.btn-primary Add
-
+  

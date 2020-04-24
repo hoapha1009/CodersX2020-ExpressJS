@@ -1,25 +1,23 @@
-extends ../layouts/common
-block content
-  div(style="color: green") 
-      h3 Add new transaction
-
-      form.form(action="", method="post")
-        table.table
-          tr
-            td 
-              label User ID:
-            td 
-              select#userid_select(name="user_id")
-                each user in users
-                  option= user.user_id
-          tr
-            td
-                label Book ID:
-            td  
-                select#bookid_select(name="book_id")
-                  each book in books
-                    option= book.book_id 
-          tr
-            td
-            td
-              button.btn.btn-primary(type="submit") Add
+div(style="color: green") 
+    h3 Add new transaction
+      
+    form(action="", method="post")
+      table
+        tr
+          td 
+            label User ID:
+          td 
+            select#userid_select(name="user_id")
+              each user in users
+                option= user.user_id
+        tr
+          td
+              label Book ID:
+          td  
+              select#bookid_select(name="book_id")
+                each book in books
+                  option= book.book_id 
+        tr
+          td
+          td
+            button(type="submit") Add
