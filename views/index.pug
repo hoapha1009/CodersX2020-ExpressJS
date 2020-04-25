@@ -6,4 +6,5 @@ block content
   br
   a(href="/users") Enter users management
   br
-  a(href="/transactions") Enter transactions management
+  if !isAdmin
+    a(href="/transactions") Enter transactions management

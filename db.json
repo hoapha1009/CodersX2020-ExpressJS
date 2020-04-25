@@ -29,23 +29,28 @@
   "users": [
     {
       "user_id": "u01",
-      "name": "Phạm Minh Hoàng"
+      "name": "Phạm Minh Hoàng",
+      "email": "hoadepzai@hp",
+      "password": "123123",
+      "isAdmin": true
     },
     {
       "user_id": "u03",
-      "name": "Phạm Thị Tú Uyên"
+      "name": "Phạm Thị Tú Uyên",
+      "email": "uyendepgai@hp",
+      "password": "123123"
     },
     {
       "user_id": "u04",
-      "name": "Nguyễn Quỳnh Hương Giang"
-    },
-    {
-      "user_id": "u05",
-      "name": "chipucu"
+      "name": "Nguyễn Quỳnh Hương Giang",
+      "email": "huonggiangbaby@hp",
+      "password": "123123"
     },
     {
       "name": "Nguyễn Quang Hiếu",
-      "user_id": "T30X5eYmo"
+      "user_id": "T30X5eYmo",
+      "email": "hieucute@hp",
+      "password": "123123"
     }
   ],
   "transactions": [
@@ -62,19 +67,19 @@
       "isComplete": false
     },
     {
-      "user_id": "u01",
+      "user_id": "u05",
       "book_id": "Z8QcCquvq",
       "trans_id": "7IMWyNOKN",
       "isComplete": false
     },
     {
-      "user_id": "u01",
+      "user_id": "u03",
       "book_id": "Z8QtCquvq",
       "trans_id": "K3D7Lc4aL",
       "isComplete": false
     },
     {
-      "user_id": "u01",
+      "user_id": "u04",
       "book_id": "hZ-OvkGur",
       "trans_id": "z4hoIm-yz",
       "isComplete": true
