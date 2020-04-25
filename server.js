@@ -10,7 +10,6 @@ var authRoute = require('./routes/auth.route.js');
 const authMiddleware = require("./middlewares/auth.middleware");
 const mainauthMiddleware = require("./middlewares/authmain.middleware");
 
-
 var app = express();
 app.set("view engine", "pug");
 app.set("views", "./views");

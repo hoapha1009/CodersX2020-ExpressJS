@@ -1,16 +1,17 @@
 const shortid = require("shortid");
 const db = require('../db');
+const md5 = require('md5');
 
 module.exports.login = (req, res) => {
   res.render('auth/login');
 };
 
 module.exports.postLogin = (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
+  var email = req.body.email;
+  var password = req.body.password;
   
-  const errors = [];
-  const user = db.get('users').find({email: email}).value();
+  var errors = [];
+  var user = db.get('users').find({email: email}).value();
   if (!user) {
     errors.push('User does not exist.')
     return res.render('auth/login', {
@@ -19,7 +20,8 @@ module.exports.postLogin = (req, res) => {
     });
   }
   
-  if (user.password !== password) {
+  var hashedPass = md5(password);
+  if (user.password !== hashedPass) {
     errors.push('Wrong password.')
     return res.render('auth/login', {
       errors: errors,

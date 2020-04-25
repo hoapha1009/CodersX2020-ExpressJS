@@ -31,26 +31,26 @@
       "user_id": "u01",
       "name": "Phạm Minh Hoàng",
       "email": "hoadepzai@hp",
-      "password": "123123",
+      "password": "4297f44b13955235245b2497399d7a93",
       "isAdmin": true
     },
     {
       "user_id": "u03",
       "name": "Phạm Thị Tú Uyên",
       "email": "uyendepgai@hp",
-      "password": "123123"
+      "password": "4297f44b13955235245b2497399d7a93"
     },
     {
       "user_id": "u04",
       "name": "Nguyễn Quỳnh Hương Giang",
       "email": "huonggiangbaby@hp",
-      "password": "123123"
+      "password": "4297f44b13955235245b2497399d7a93"
     },
     {
       "name": "Nguyễn Quang Hiếu",
       "user_id": "T30X5eYmo",
       "email": "hieucute@hp",
-      "password": "123123"
+      "password": "4297f44b13955235245b2497399d7a93"
     }
   ],
   "transactions": [
