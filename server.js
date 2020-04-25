@@ -8,6 +8,8 @@ var usersRoute = require('./routes/users.route');
 var transactionsRoute = require('./routes/transactions.route.js');
 var authRoute = require('./routes/auth.route.js');
 const authMiddleware = require("./middlewares/auth.middleware");
+const mainauthMiddleware = require("./middlewares/authmain.middleware");
+
 
 var app = express();
 app.set("view engine", "pug");
@@ -18,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static('public'));
 
 
-app.use('/', authMiddleware.requireAuth, mainRoute);
+app.use('/', mainauthMiddleware.requireMainAuth, mainRoute);
 app.use('/books', authMiddleware.requireAuth, booksRoute);
 app.use('/users', authMiddleware.requireAuth, usersRoute);
 app.use('/transactions', authMiddleware.requireAuth, transactionsRoute);
