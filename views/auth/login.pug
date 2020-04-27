@@ -7,9 +7,11 @@ block content
       .alert.alert-danger= error
   
   form.form(action="", method="post")
-    .form-group
-      label(for="email")
-      input#email.form-control(type="text", name="email", value= values ? values.name : '')
-      label(for="password")
-      input#password.form-control(type="password", name="password", value= values ? values.password : '')
-      button.btn.btn-primary Login
+    .form-group.row
+      label.col-sm-2.col-form-label(for="email") Email:
+      .col-sm-10
+        input#email.form-control(type="text", name="email", required, value= values ? values.email : '')
+      label.col-sm-2.col-form-label(for="password") Password:
+      .col-sm-10
+        input#password.form-control(type="password", name="password", required, value= values ? values.password : '')
+        button.btn.btn-primary Login

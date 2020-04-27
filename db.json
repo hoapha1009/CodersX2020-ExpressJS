@@ -28,58 +28,57 @@
   ],
   "users": [
     {
-      "user_id": "u01",
-      "name": "Phạm Minh Hoàng",
-      "email": "hoadepzai@hp",
-      "password": "4297f44b13955235245b2497399d7a93",
-      "isAdmin": true
+      "name": "Thịnh",
+      "email": "admin@gmail.com",
+      "password": "$2b$10$IQZLOlukPftKgFksnFD5v.CrA1A50TBbzK98uOWZ9IVBFTpTwG5eS",
+      "user_id": "4oPJtKg3M",
+      "isAdmin": false,
+      "wrongLoginCount": 0
     },
     {
-      "user_id": "u03",
-      "name": "Phạm Thị Tú Uyên",
-      "email": "uyendepgai@hp",
-      "password": "4297f44b13955235245b2497399d7a93"
+      "name": "Phạm Minh Hoàng",
+      "email": "hoapha11@hp",
+      "password": "$2b$10$N52We6u6UGaMlTyC8dRRgOtoh66Rgcn6tN2woBVg7Uq4sLT7B3D1u",
+      "user_id": "17LBu1RyH",
+      "isAdmin": true,
+      "wrongLoginCount": 0
     },
     {
       "user_id": "u04",
-      "name": "Nguyễn Quỳnh Hương Giang",
+      "name": "Nguyễn Huỳnh Hương Giang",
       "email": "huonggiangbaby@hp",
-      "password": "4297f44b13955235245b2497399d7a93"
-    },
-    {
-      "name": "Nguyễn Quang Hiếu",
-      "user_id": "T30X5eYmo",
-      "email": "hieucute@hp",
-      "password": "4297f44b13955235245b2497399d7a93"
+      "password": "123123",
+      "isAdmin": false,
+      "wrongLoginCount": 0
     }
   ],
   "transactions": [
     {
       "trans_id": "t01",
       "book_id": "html01",
-      "user_id": "u01",
+      "user_id": "4oPJtKg3M",
       "isComplete": true
     },
     {
-      "user_id": "u01",
+      "user_id": "u04",
       "book_id": "css02",
       "trans_id": "J7qqwf8x5",
       "isComplete": false
     },
     {
-      "user_id": "u05",
+      "user_id": "4oPJtKg3M",
       "book_id": "Z8QcCquvq",
       "trans_id": "7IMWyNOKN",
       "isComplete": false
     },
     {
-      "user_id": "u03",
+      "user_id": "17LBu1RyH",
       "book_id": "Z8QtCquvq",
       "trans_id": "K3D7Lc4aL",
       "isComplete": false
     },
     {
-      "user_id": "u04",
+      "user_id": "17LBu1RyH",
       "book_id": "hZ-OvkGur",
       "trans_id": "z4hoIm-yz",
       "isComplete": true

@@ -1,6 +1,8 @@
 const shortid = require("shortid");
-const md5 = require('md5');
+// const md5 = require('md5');
+const bcrypt = require('bcrypt');
 
+const saltRounds = 10;
 const db = require('../db');
 
 module.exports.index = (req, res) => {
@@ -10,12 +12,16 @@ module.exports.index = (req, res) => {
 };
 
 module.exports.create = (req, res) => {
-  req.body.user_id = shortid.generate();
-  req.body.password = md5(req.body.password);
-  db.get('users')
+  // req.body.password = md5(req.body.password);
+  bcrypt.hash(req.body.password, saltRounds, (err, hash) => {  
+    req.body.user_id = shortid.generate();
+    req.body.password = hash;
+    req.body.isAdmin = false;
+    db.get('users')
     .push(req.body)
     .write();
-  res.redirect('back');
+    res.redirect('back');
+  });
 };
 
 module.exports.changeName = (req, res) => {
