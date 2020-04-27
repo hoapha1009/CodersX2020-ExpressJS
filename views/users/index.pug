@@ -19,11 +19,20 @@ block content
 
   h2(style="color: orange") Add new user
   form.form(action="/users", method="post")
+    if(errors)
+      each error in errors 
+        .alert.alert-danger= error
     label(for="name") Enter name:
     br
     input#name(type="text", name="name")
     br
-    if(error)
-      .alert.alert-danger= error
+    label(for="email") Enter email:
+    br
+    input#name(type="text", name="email")
+    br
+    label(for="password") Enter password:
+    br
+    input#name(type="password", name="password")
+    br
     button.btn.btn-primary Add
 

@@ -6,12 +6,14 @@ const shortid = require("shortid");
 const db = require("../db");
 const controller = require('../controllers/transactions.controller');
 const countCookie = require('../middlewares/count-cookie.middleware');
+const authMiddleware = require("../middlewares/auth.middleware");
+
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: true }));
 
 // Render transaction web
-router.get("/", countCookie.countCookie, controller.index);
+router.get("/", countCookie.countCookie, authMiddleware.requireAuth,controller.index);
 
 // Delete trans
 router.get("/:trans_id/delete", controller.delete);

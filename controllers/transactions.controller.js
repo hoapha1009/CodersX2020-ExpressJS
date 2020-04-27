@@ -3,8 +3,14 @@ const shortid = require("shortid");
 const db = require('../db');
 
 module.exports.index = (req, res) => {
+  var userId = req.cookies.userId;
+  var transactions = db.get("transactions").value();
+  transactions = transactions.filter(tran => {
+    return tran.user_id === userId;
+  });
+  console.log(transactions);
   res.render("./transactions/index", {
-    transactions: db.get("transactions").value()
+    transactions: transactions
   });
 };
 
