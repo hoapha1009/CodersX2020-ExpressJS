@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const cookieParser = require('cookie-parser');
 
@@ -14,7 +16,7 @@ var app = express();
 app.set("view engine", "pug");
 app.set("views", "./views");
 
-app.use(cookieParser('IloveCodersX'));
+app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use(express.static('public'));
 

@@ -7,7 +7,6 @@ module.exports.requireAuth = (req, res, next) => {
   }
   
   var userId = req.signedCookies.userId;
-  console.log(userId);
   var user = db.get('users').find({ user_id: userId }).value();
   
   if(!user) {
