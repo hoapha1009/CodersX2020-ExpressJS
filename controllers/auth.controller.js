@@ -38,7 +38,10 @@ module.exports.postLogin = (req, res) => {
         return;
     }
     else {
-        res.cookie('userId', user.user_id);
+        res.cookie('userId', user.user_id, {
+          signed: true
+        });
+      
         db.get('users')
           .find({ email: email })
           .assign({ wrongLoginCount: 0 })

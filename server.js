@@ -14,7 +14,7 @@ var app = express();
 app.set("view engine", "pug");
 app.set("views", "./views");
 
-app.use(cookieParser());
+app.use(cookieParser('IloveCodersX'));
 
 app.use(express.static('public'));
 
