@@ -16,7 +16,9 @@ block content
           a(href="/users/" + user.user_id + "/changename") Click
         td
           a(href="/users/" + user.user_id + "/delete") Click
-
+          
+  include ../layouts/pagination.pug
+      
   h2(style="color: orange") Add new user
   form.form(action="/users", method="post")
     if(errors)

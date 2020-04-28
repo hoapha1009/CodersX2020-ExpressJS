@@ -22,7 +22,9 @@ block content
             span(style="padding: 0 3px; color: yellow")= trans.isComplete === true ? "Yes" : "No"
         td 
           a(href="/transactions/" + trans.trans_id + "/delete") Click
-
+          
+  include ../layouts/pagination.pug
+  
   a(href="./transactions/create", style="color: green") 
       h3 Add new transaction
 

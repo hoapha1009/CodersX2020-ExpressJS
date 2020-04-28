@@ -19,6 +19,8 @@ block content
           a(href="/books/" + book.book_id + "/update") Click
         td 
           a(href="/books/" + book.book_id + "/delete") Click
+  
+  include ../layouts/pagination.pug
 
   div(style="color: green") 
       h3 Add new book

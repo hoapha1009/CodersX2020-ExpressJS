@@ -3,14 +3,23 @@ const shortid = require("shortid");
 const db = require('../db');
 
 module.exports.index = (req, res) => {
-  var userId = req.cookies.userId;
-  var transactions = db.get("transactions").value();
-  transactions = transactions.filter(tran => {
+  var userId = req.signedCookies.userId;
+  console.log(userId);
+  var numberPage = Math.ceil(db.get('transactions').value().length / perPage);
+  var perPage = 10;
+  var page = req.query.page;
+  
+  var start = (page - 1) * perPage;
+  var end = page * perPage;
+  
+  var transactions = db.get('transactions').value().filter(tran => {
     return tran.user_id === userId;
   });
-  console.log(transactions);
   res.render("./transactions/index", {
-    transactions: transactions
+    transactions: transactions,
+    numberPage: numberPage,
+    titleLink: "transactions",
+    page: page+1
   });
 };
 
