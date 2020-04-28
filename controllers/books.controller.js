@@ -21,7 +21,7 @@ module.exports.index = (req, res) => {
     books: db.get('books').drop(drop).take(perPage).value(), //C2
     numberPage: numberPage,
     titleLink: "books",
-    page: page+1
+    page: page
   });
 };
 

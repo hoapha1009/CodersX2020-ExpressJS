@@ -33,4 +33,8 @@ router.post("/changename", controller.postChangeName);
 // Delete user
 router.get("/:user_id/delete", controller.delete);
 
+//Update user
+router.get("/update-profile", controller.updateProfile);
+
+
 module.exports = router;

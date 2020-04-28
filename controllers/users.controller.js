@@ -20,7 +20,7 @@ module.exports.index = (req, res) => {
       .slice(start, end),
     numberPage: numberPage,
     titleLink: "users",
-    page: page+1
+    page: page
   });
 };
 
@@ -30,6 +30,7 @@ module.exports.create = (req, res) => {
     req.body.user_id = shortid.generate();
     req.body.password = hash;
     req.body.isAdmin = false;
+    req.body.wrongLoginCount = 0;
     db.get("users")
       .push(req.body)
       .write();
@@ -56,4 +57,19 @@ module.exports.delete = (req, res) => {
     .remove({ user_id: req.params.user_id })
     .write();
   res.redirect("back");
+};
+
+module.exports.updateProfile = (req, res) => {
+  bcrypt.hash(req.body.pasword, saltRounds, (err, hash) => {
+    req.body.user = shortid.generate();
+    req.body.isAdmin = false;
+    req.body.password = hash;
+    req.body.wrongLoginCount = 0;
+    
+    db.get('users')
+      .push(req.body)
+      .write();
+    
+    res.redirect('/users');
+  });
 };

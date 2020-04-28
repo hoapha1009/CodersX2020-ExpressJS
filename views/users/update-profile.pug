@@ -1,0 +1,23 @@
+extends ../layouts/common
+block content
+  form.form(action="/users", method="post", enctype="multipart/form-data")
+    if(errors)
+      each error in errors 
+        .alert.alert-danger= error
+    label(for="name") Enter name:
+    br
+    input#name(type="text", name="name")
+    br
+    label(for="email") Enter email:
+    br
+    input#name(type="text", name="email")
+    br
+    label(for="password") Enter password:
+    br
+    input#name(type="password", name="password")
+    br
+    label(for="avarta") Avarta:
+    br
+    input#avarta(type="file", name="avarta")
+    br
+    button.btn.btn-primary Add

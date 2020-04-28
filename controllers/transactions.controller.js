@@ -19,7 +19,7 @@ module.exports.index = (req, res) => {
     transactions: transactions,
     numberPage: numberPage,
     titleLink: "transactions",
-    page: page+1
+    page: page
   });
 };
 
