@@ -241,7 +241,8 @@
       "password": "$2b$10$N52We6u6UGaMlTyC8dRRgOtoh66Rgcn6tN2woBVg7Uq4sLT7B3D1u",
       "user_id": "17LBu1RyH",
       "isAdmin": true,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 0,
+      "avatar": "http://res.cloudinary.com/hoapha1009/image/upload/guxciupfu7vi86nm6m1c"
     },
     {
       "user_id": "u04",
@@ -249,7 +250,8 @@
       "email": "huonggiangbaby@hp",
       "password": "123123",
       "isAdmin": false,
-      "wrongLoginCount": 0
+      "wrongLoginCount": 2,
+      "avatar": "http://res.cloudinary.com/hoapha1009/image/upload/zsa2ov2dnlxggsyi9djy"
     },
     {
       "user_id": "WPX04JYG5NL",
@@ -608,7 +610,7 @@
       "name": "Susan James",
       "email": "nisi.nibh@tempusloremfringilla.com",
       "isAdmin": false,
-      "wrongLoginCount": 0,
+      "wrongLoginCount": 2,
       "password": "PDD75ZAS3AG"
     },
     {
@@ -645,12 +647,6 @@
     }
   ],
   "transactions": [
-    {
-      "trans_id": "t01",
-      "book_id": "html01",
-      "user_id": "4oPJtKg3M",
-      "isComplete": true
-    },
     {
       "user_id": "u04",
       "book_id": "css02",
@@ -751,7 +747,7 @@
       "user_id": "4oPJtKg3M",
       "trans_id": "CBX36NOY5AA",
       "book_id": "ZGT33RXS6BD",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "user_id": "4oPJtKg3M",
@@ -841,7 +837,7 @@
       "user_id": "4oPJtKg3M",
       "trans_id": "YCH61CRI5ST",
       "book_id": "FLI70IBX9VS",
-      "isComplete": false
+      "isComplete": true
     },
     {
       "user_id": "4oPJtKg3M",

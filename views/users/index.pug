@@ -1,40 +1,35 @@
 extends ../layouts/common
 block content
-  h1(style="color: blue") User Management (CRUD)
-  h2(style="color: green") User list
+  h1(style="color: red") User Management (CRUD)
+  h2.d-flex.align-items-end.justify-content-between
+    span(style="color: green;") User list
+    span(style="font-size: 24px")
+      a(href='/users/create') Create a new User
+   
   table.table(style="text-align: left;")
-    tr
-      th User ID
-      th Name
-      th Change username
-      th Delete
+    thead.thead-light
+      tr
+        th Avarta
+        th User ID
+        th Name
+        th View
+        th Change username
+        th Delete
+    tdbody
     each user in users  
       tr
-        td= user.user_id
-        td= user.name
-        td
-          a(href="/users/" + user.user_id + "/changename") Click
-        td
-          a(href="/users/" + user.user_id + "/delete") Click
+        td.align-middle
+          if(!user.avatar)
+              img.rounded-circle(src=defaultAvatar, width='32px')
+          else
+              img.rounded-circle(src=user.avatar , width ='32px')
+        td.align-middle= user.user_id
+        td.align-middle= user.name
+        td.align-middle
+          a(href="/users/" + user.user_id+ "/profile") View
+        td.align-middle
+          a(href="/users/" + user.user_id + "/changename") Change
+        td.align-middle
+          a(href="/users/" + user.user_id + "/delete") Delete
           
   include ../layouts/pagination.pug
-      
-  h2(style="color: orange") Add new user
-  form.form(action="/users", method="post")
-    if(errors)
-      each error in errors 
-        .alert.alert-danger= error
-    label(for="name") Enter name:
-    br
-    input#name(type="text", name="name")
-    br
-    label(for="email") Enter email:
-    br
-    input#name(type="text", name="email")
-    br
-    label(for="password") Enter password:
-    br
-    input#name(type="password", name="password")
-    br
-    button.btn.btn-primary Add
-

@@ -17,7 +17,6 @@ module.exports.requireAuth = (req, res, next) => {
   if(user.isAdmin) {
     res.locals.isAdmin = true;
   }
-  
   next();
 }; 
 
