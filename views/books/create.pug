@@ -1,0 +1,29 @@
+extends ../layouts/common
+block content
+  h3.d-flex.justify-content-between 
+    span Create a new book
+    span
+        a(href='/books') Back
+
+  if errors
+    each error in errors
+      .alert.alert-danger= error
+  if success
+    .alert.alert-success= success
+  form(action='/books/create', method='POST', enctype="multipart/form-data")
+    .form-group.row
+      label.col-sm-2.col-form-label(for="title") Title:
+        span(style='color:red')  *
+      .col-sm-10
+        input#title.form-control(type='text', name='title', required)
+    .form-group.row
+      label.col-sm-2.col-form-label(for="description") Description:
+        span(style='color:red')  *
+      .col-sm-10
+        input#description.form-control(type='textarea', name='description', required)
+    .form-group.row
+      label.col-sm-2.col-form-label(for="book_cover") Book cover
+        span(style='color:red')  *
+      .col-sm-10
+        input#book_cover.form-control-file(type='file', name='coverUrl')
+    button.btn.btn-primary Create 

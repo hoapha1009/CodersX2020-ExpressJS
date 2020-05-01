@@ -1,0 +1,26 @@
+extends ../layouts/common
+block content
+  h1 Cart list
+  table.table
+    thead.bg-light
+      tr
+        th Book cover
+        th Book title
+        th Number
+    tbody
+      each cart in arrCart
+          tr
+            if cart.bookCover !== "undefined"
+              td.align-middle 
+                img(src=cart.bookCover, width='32px', height='32px', name="bookCover")
+            else
+              td.align-middle 
+                img(src=defaultCoverUrl, width='32px', height='32px', name="bookCover")
+            td.align-middle(name="titleBook")=cart.titleBook
+            td.align-middle(name="number")=cart.number
+            
+      tr
+        td
+        td
+          a.btn.btn-primary(href="/cart/rent") Rent
+        td

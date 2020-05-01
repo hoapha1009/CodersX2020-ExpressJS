@@ -3,7 +3,8 @@
     {
       "book_id": "html01",
       "title": "HTML",
-      "description": "HTML the best"
+      "description": "HTML the best",
+      "coverUrl": "http://res.cloudinary.com/hoapha1009/image/upload/guxciupfu7vi86nm6m1c"
     },
     {
       "book_id": "css02",
@@ -11,7 +12,7 @@
       "description": "CSS the best"
     },
     {
-      "book_id": "Z8QcCquvq",
+      "book_id": "Z7Qcquvq",
       "title": "Javascript",
       "description": "Javascript the best"
     },
@@ -251,7 +252,7 @@
       "password": "123123",
       "isAdmin": false,
       "wrongLoginCount": 2,
-      "avatar": "http://res.cloudinary.com/hoapha1009/image/upload/zsa2ov2dnlxggsyi9djy"
+      "avatar": "http://res.cloudinary.com/hoapha1009/image/upload/v1/avatarCodersX/u04"
     },
     {
       "user_id": "WPX04JYG5NL",
@@ -300,30 +301,6 @@
       "isAdmin": false,
       "wrongLoginCount": 0,
       "password": "AFN79OBT8SL"
-    },
-    {
-      "user_id": "LHL12HUZ6ML",
-      "name": "Wang Q. Miller",
-      "email": "nunc@egetipsumSuspendisse.edu",
-      "isAdmin": false,
-      "wrongLoginCount": 0,
-      "password": "HYD11XIX4HJ"
-    },
-    {
-      "user_id": "GWI46VKU3CN",
-      "name": "Lana U. Boone",
-      "email": "facilisis.Suspendisse@gravidanon.com",
-      "isAdmin": false,
-      "wrongLoginCount": 0,
-      "password": "CBD00KHI8MO"
-    },
-    {
-      "user_id": "JDN32IQN4ZR",
-      "name": "Jemima H. Gallagher",
-      "email": "Cras.vehicula@egetlaoreet.org",
-      "isAdmin": false,
-      "wrongLoginCount": 0,
-      "password": "IIQ93KJI5OV"
     },
     {
       "user_id": "OJQ47EJS5TQ",
@@ -904,6 +881,98 @@
       "trans_id": "FVE85QTY2EX",
       "book_id": "TKH86GTA2AF",
       "isComplete": false
+    },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {
+      "trans_id": "6zzD5n99c"
+    },
+    {
+      "trans_id": "CF54G0W2mm"
+    },
+    {
+      "trans_id": "6v1sUlkEa1"
+    },
+    {
+      "trans_id": "wI0ndB9S1d"
+    },
+    {
+      "trans_id": "RIvux7GSmK"
+    },
+    {
+      "trans_id": "ehCxqih6Pt"
+    },
+    {
+      "trans_id": "YQBp3dvut",
+      "user_id": "17LBu1RyH"
+    },
+    {
+      "trans_id": "3nJg-7CtX6",
+      "user_id": "17LBu1RyH"
+    },
+    {
+      "trans_id": "35RTFDDpN",
+      "user_id": "17LBu1RyH"
+    },
+    {
+      "trans_id": "vsDZlVJp-R",
+      "user_id": "17LBu1RyH"
+    },
+    {
+      "trans_id": "M7KQ30JbC",
+      "user_id": "17LBu1RyH",
+      "book_id": "html01"
+    },
+    {
+      "trans_id": "V4QcY0QvDn",
+      "user_id": "17LBu1RyH",
+      "book_id": "css02"
+    },
+    {
+      "trans_id": "yVVb2BrHR",
+      "user_id": "17LBu1RyH",
+      "book_id": "html01"
+    },
+    {
+      "trans_id": "s2BxuBLDls",
+      "user_id": "17LBu1RyH",
+      "book_id": "css02"
+    },
+    {
+      "trans_id": "RQMVP9vgy",
+      "user_id": "17LBu1RyH",
+      "book_id": "html01",
+      "isComplete": false
+    },
+    {
+      "trans_id": "L0pDFz33HJ",
+      "user_id": "17LBu1RyH",
+      "book_id": "css02",
+      "isComplete": false
+    }
+  ],
+  "sessions": [
+    {
+      "id": "umHc7VzW5",
+      "cart": {
+        "html01": 1,
+        "css02": 1
+      }
+    },
+    {
+      "id": "04Gi7Cecg"
     }
   ]
 }

@@ -7,7 +7,7 @@ module.exports.index = (req, res) => {
   console.log(userId);
   var numberPage = Math.ceil(db.get('transactions').value().length / perPage);
   var perPage = 10;
-  var page = req.query.page;
+  var page = parseInt(req.query.page) || 1;
   
   var start = (page - 1) * perPage;
   var end = page * perPage;
@@ -16,7 +16,7 @@ module.exports.index = (req, res) => {
     return tran.user_id === userId;
   });
   res.render("./transactions/index", {
-    transactions: transactions,
+    transactions: transactions.slice(start, end),
     numberPage: numberPage,
     titleLink: "transactions",
     page: page

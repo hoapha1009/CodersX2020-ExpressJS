@@ -63,7 +63,7 @@ module.exports.postLogin = (req, res) => {
           .find({ email: email })
           .assign({ wrongLoginCount: 0 })
           .write();
-        res.redirect('/');
+        res.redirect('/books');
     }
   })
   

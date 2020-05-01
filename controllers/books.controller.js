@@ -1,6 +1,8 @@
 const shortid = require("shortid");
+var cloudinary = require('cloudinary').v2
 
 const db = require('../db');
+var defaultCoverUrl = cloudinary.url('avatarCodersX/placeholder-book-cover-default_prhetk');
 
 
 module.exports.index = (req, res) => {
@@ -21,13 +23,21 @@ module.exports.index = (req, res) => {
     books: db.get('books').drop(drop).take(perPage).value(), //C2
     numberPage: numberPage,
     titleLink: "books",
-    page: page
+    page: page,
+    defaultCoverUrl: defaultCoverUrl
   });
 };
 
-module.exports.create = (req, res) => {
+module.exports.getCreate = (req, res) => {
+  res.render('./books/create');
+};
+
+module.exports.create = async (req, res) => {
   req.body.book_id = shortid.generate();
-  console.log(req.body.book_id);
+  var file = req.file.path;
+  var rs = await cloudinary.uploader.upload(file, 
+      { public_id: "avatarCodersX/" + req.body.book_id } );
+  req.body.coverUrl = cloudinary.url(rs.public_id);
   db.get("books")
     .push(req.body)
     .write();
@@ -48,8 +58,9 @@ module.exports.postupdateTitle = (req, res) => {
   res.redirect("/books");
 };
 
-module.exports.delete = (req, res) => {
+module.exports.delete = async (req, res) => {
   var book_id = req.params.book_id;
+  await cloudinary.uploader.destroy("avatarCodersX/" + book_id);
   db.get("books")
     .remove({ book_id: book_id })
     .write();

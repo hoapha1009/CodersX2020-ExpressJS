@@ -40,12 +40,15 @@ module.exports.postCreate = (req, res) => {
     req.body.wrongLoginCount = 0;
     var file = req.file.path;
     var rs = await cloudinary.uploader.upload(file, 
-      { public_id: req.body.user_id } );
+      { public_id: "avatarCodersX/" + req.body.user_id } );
     req.body.avatar = cloudinary.url(rs.public_id);
     db.get("users")
       .push(req.body)
       .write();
-    res.redirect("back");
+    var success = "Tạo tài khoản thành công!";
+    res.render("./users/create", {
+      success: success
+    });
   });
 };
 
@@ -65,7 +68,7 @@ module.exports.postChangeName = (req, res) => {
 
 module.exports.delete = async (req, res) => {
   var user = db.get("users").find({ user_id: req.params.user_id }).value();
-  await cloudinary.uploader.destroy(user.user_id);
+  await cloudinary.uploader.destroy("avatarCodersX/" + user.user_id);
   db.get("users")
     .remove({ user_id: req.params.user_id })
     .write();
@@ -121,7 +124,7 @@ module.exports.getChangeAvatar = (req, res) => {
 module.exports.postChangeAvatar = async (req, res) => {
   var file = req.file.path;
   var matchedUser = db.get('users').find({ user_id: req.body.user_id }).value();
-  var rs = await cloudinary.uploader.upload(file)
+  var rs = await cloudinary.uploader.upload(file, { public_id: "avatarCodersX/" + req.body.user_id })
   var newAvatar = await cloudinary.url(rs.public_id);
   console.log(newAvatar);
   db.get('users')

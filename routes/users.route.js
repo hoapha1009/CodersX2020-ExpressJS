@@ -7,7 +7,6 @@ var multer  = require('multer');
 const db = require("../db");
 const controller = require("../controllers/users.controller");
 const validate = require("../validate/user.validate.js");
-const countCookie = require("../middlewares/count-cookie.middleware");
 var upload = multer({ dest: './public/uploads/' });
 
 
@@ -17,7 +16,6 @@ router.use(bodyParser.urlencoded({ extended: true }));
 // Render user web
 router.get(
   "/",
-  countCookie.countCookie,
   controller.index
 );
 
@@ -32,7 +30,6 @@ router.post("/create",
 // Change username
 router.get(
   "/:user_id/changename",
-  countCookie.countCookie,
   controller.changeName
 );
 router.post("/changename", controller.postChangeName);
