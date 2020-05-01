@@ -1,4 +1,4 @@
-module.exports.countCookie = (req, res, next) => {
+module.exports = (req, res, next) => {
   var cookie = req.cookies.count;
   if (cookie === undefined)
   {

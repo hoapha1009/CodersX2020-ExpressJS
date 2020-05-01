@@ -1,43 +1,40 @@
 extends ../layouts/common
 block content
+  
   h1 Book management
-
-  div(style="color: blue")
-      h2 Book list
+  h2.d-flex.align-items-end.justify-content-between
+    span(style="color: green;") Books list
+    span(style="font-size: 24px")
+      a(href='/books/create') Create a new book
 
   table.table(style="text-align: left")
-    tr
-      th Title
-      th Description
-      th Update title
-      th Delete
-    each book in books
+    thead.bg-light
       tr
-        td= book.title
-        td= book.description
-        td 
-          a(href="/books/" + book.book_id + "/update") Click
-        td 
-          a(href="/books/" + book.book_id + "/delete") Click
+        th Book cover
+        th Title
+        th Description
+        th Update title
+        th Delete
+        th
+    tbody
+      each book in books
+        tr
+          td.align-middle
+            if(!book.coverUrl)
+                img.rounded-circle(src=defaultCoverUrl, width='32px', height='32px')
+            else
+                img.rounded-circle(src=book.coverUrl , width ='32px', height='32px')
+          td.align-middle= book.title
+          td.align-middle= book.description
+          td.align-middle 
+            a(href="/books/" + book.book_id + "/update") Click
+          td.align-middle
+            a(href="/books/" + book.book_id + "/delete") Click
+          td.align-middle
+            a.btn.btn-success(href="/cart/add/" + book.book_id) Add Cart
+  
+  include ../layouts/pagination.pug
 
-  div(style="color: green") 
-      h3 Add new book
-
-      form.form(action="/books", method="post")
-        table
-          tr
-            td 
-              label Title:
-            td 
-              input.form-control(type="text", name="title") 
-          tr
-            td
-                label Description:
-            td  
-                input.form-control(type="text", name="description") 
-          tr
-            td
-            td
-              button.btn.btn-primary(type="submit") Add
+ 
 
 

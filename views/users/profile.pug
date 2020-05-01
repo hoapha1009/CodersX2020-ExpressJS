@@ -1,0 +1,32 @@
+extends ../layouts/common
+block content
+  
+  h2(style="color: green") Your Profile
+  form( method='post', action='/users/profile', enctype="multipart/form-data")
+    .form-group.row
+      .col-sm-2
+      .col-sm-10
+        input.form-control(type='text', name="user_id", value=user.user_id, hidden)
+    .form-group.row
+      label.col-sm-2.col-form-label User Name
+      .col-sm-10
+        input.form-control(type='text', name='name', value=user.name)
+    .form-group.row
+      label.col-sm-2.col-form-label Email
+      .col-sm-10
+        input.form-control(type='text', name='email', value=user.email)
+    .form-group.row
+      label.col-sm-2.col-form-label(for='avatar') Avatar
+      .col-sm-10
+        if(!user.avatar)
+          img.rounded-circle(src=defaultAvatar, width='250px', name="avatar")
+        else
+          img.rounded-circle(src=user.avatar , width ='250px')
+        a.d-block.mx-4.my-3(href='/users/' + user.user_id + '/update-avatar') Change Avatar
+    .form-group.row 
+      .col-sm-2
+      .col-sm-10
+        button.btn.btn-primary Update
+        a.d-inline-block.mx-4(href='/users') Back
+      
+      
