@@ -29,23 +29,20 @@ router.post("/create",
 
 // Change username
 router.get(
-  "/:user_id/changename",
+  "/:id/changename",
   controller.changeName
 );
 router.post("/changename", controller.postChangeName);
 
 // Delete user
-router.get("/:user_id/delete", controller.delete);
-
-//Update user
-router.get("/update-profile", controller.updateProfile);
+router.get("/:id/delete", controller.delete);
 
 //Profile
-router.get('/:user_id/profile', controller.getProfile);
+router.get('/:id/profile', controller.getProfile);
 router.post('/profile', upload.single('avatar'), controller.postProfile);
 
 //Change avatar
-router.get('/:user_id/update-avatar', controller.getChangeAvatar);
+router.get('/:id/update-avatar', controller.getChangeAvatar);
 router.post('/update-avatar', upload.single('avatar'), controller.postChangeAvatar);
 
 module.exports = router;

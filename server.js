@@ -2,6 +2,9 @@ require('dotenv').config();
 
 const express = require("express");
 const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true});
 
 var db = require('./db.json');
 var mainRoute = require('./routes/main.route');
@@ -24,7 +27,7 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 
 app.use(express.static('public'));
 app.use(sessionMiddleware);
-app.use(countMiddleware);
+// app.use(countMiddleware);
 
 
 app.use('/', mainauthMiddleware.requireMainAuth, mainRoute);

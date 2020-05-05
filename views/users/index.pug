@@ -23,13 +23,12 @@ block content
               img.rounded-circle(src=defaultAvatar, width='32px')
           else
               img.rounded-circle(src=user.avatar , width ='32px')
-        td.align-middle= user.user_id
+        td.align-middle= user.id
         td.align-middle= user.name
         td.align-middle
-          a(href="/users/" + user.user_id+ "/profile") View
+          a(href="/users/" + user.id+ "/profile") View
         td.align-middle
-          a(href="/users/" + user.user_id + "/changename") Change
+          a(href="/users/" + user.id + "/changename") Change
         td.align-middle
-          a(href="/users/" + user.user_id + "/delete") Delete
+          a(href="/users/" + user.id + "/delete") Delete
           
-  include ../layouts/pagination.pug

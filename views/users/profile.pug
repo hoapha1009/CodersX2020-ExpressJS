@@ -6,7 +6,7 @@ block content
     .form-group.row
       .col-sm-2
       .col-sm-10
-        input.form-control(type='text', name="user_id", value=user.user_id, hidden)
+        input.form-control(type='text', name="id", value=user.id, hidden)
     .form-group.row
       label.col-sm-2.col-form-label User Name
       .col-sm-10
@@ -22,7 +22,7 @@ block content
           img.rounded-circle(src=defaultAvatar, width='250px', name="avatar")
         else
           img.rounded-circle(src=user.avatar , width ='250px')
-        a.d-block.mx-4.my-3(href='/users/' + user.user_id + '/update-avatar') Change Avatar
+        a.d-block.mx-4.my-3(href='/users/' + user.id + '/update-avatar') Change Avatar
     .form-group.row 
       .col-sm-2
       .col-sm-10

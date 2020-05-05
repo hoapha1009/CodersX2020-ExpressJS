@@ -27,14 +27,13 @@ block content
           td.align-middle= book.title
           td.align-middle= book.description
           td.align-middle 
-            a(href="/books/" + book.book_id + "/update") Click
+            a(href="/books/" + book.id + "/update") Update Title
           td.align-middle
-            a(href="/books/" + book.book_id + "/delete") Click
+            a(href="/books/" + book.id + "/delete") Delete
           td.align-middle
-            a.btn.btn-success(href="/cart/add/" + book.book_id) Add Cart
+            if(cart.indexOf(book.id) === -1)
+              a.btn.btn-success(href="/cart/add/" + book.id) Add Cart
+            else
+              .btn.btn-secondary(disabled) In Cart
   
-  include ../layouts/pagination.pug
-
- 
-
 

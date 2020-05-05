@@ -4,7 +4,7 @@ block content
   form.form(action="/users/changename", method="post")
     label(for="name") New name:
     br
-    input.form-control(type="text", hidden, name="user_id", value=user_id)
+    input.form-control(type="text", hidden, name="id", value=id)
     input.form-control#name(type="text", name="name")
     br
     button.btn.btn-primary(type="submit") Change

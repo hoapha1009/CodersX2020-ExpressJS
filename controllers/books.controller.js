@@ -2,29 +2,28 @@ const shortid = require("shortid");
 var cloudinary = require('cloudinary').v2
 
 const db = require('../db');
+var Book = require("../models/book.model");
+var Session = require('../models/session.model');
 var defaultCoverUrl = cloudinary.url('avatarCodersX/placeholder-book-cover-default_prhetk');
 
 
-module.exports.index = (req, res) => {
-  var page = parseInt(req.query.page) || 1;
+module.exports.index = async (req, res) => {
+  var sessionId = req.signedCookies.sessionId;
+  var books = await Book.find();
+  var session = await Session.findById(sessionId);
+  var currentPage = req.query.page ? parseInt(req.query.page) : 1;
   var perPage = 10;
-  var numberPage = Math.ceil(db.get('books').value().length / perPage );
-  
-// C1: Dùng slice
-  var start = (page - 1) * perPage;
-  var end = page * perPage;
-  
-// C2: Dùng Lodash 
-  var drop = (page - 1) * perPage;
-  
+  var pageSize = Math.ceil(books.length / perPage );
+  var begin = (currentPage - 1) * perPage;
+  var end = currentPage * perPage;
+
   res.render('./books', {
-    // books: db.get('books').value().slice(start, end) //C1
-    
-    books: db.get('books').drop(drop).take(perPage).value(), //C2
-    numberPage: numberPage,
-    titleLink: "books",
-    page: page,
-    defaultCoverUrl: defaultCoverUrl
+    books: books, 
+    cart:session.cart,
+    defaultCoverUrl: defaultCoverUrl,
+    pageSize,
+    currentPage,
+    titleLink: "books"
   });
 };
 
@@ -33,36 +32,35 @@ module.exports.getCreate = (req, res) => {
 };
 
 module.exports.create = async (req, res) => {
-  req.body.book_id = shortid.generate();
   var file = req.file.path;
+  var idBook = file.split("\\").pop();
   var rs = await cloudinary.uploader.upload(file, 
-      { public_id: "avatarCodersX/" + req.body.book_id } );
-  req.body.coverUrl = cloudinary.url(rs.public_id);
-  db.get("books")
-    .push(req.body)
-    .write();
-  res.redirect("back");
+    { public_id: "avatarCodersX/uploads/" + idBook } );
+  req.body.coverUrl = await cloudinary.url(rs.public_id);
+  await Book.create(req.body);
+  var success = "Thêm sách mới thành công!";
+  res.render("./books/create", {
+    success: success
+  });
 };
 
 module.exports.updateTitle = (req, res) => {
   res.render("./books/update-title", {
-    book_id: req.params.book_id
+    id: req.params.id
   });
 };
 
-module.exports.postupdateTitle = (req, res) => {
-  db.get("books")
-    .find({ book_id: req.body.book_id })
-    .assign({ title: req.body.title })
-    .write();
+module.exports.postupdateTitle = async (req, res) => {
+  var idBook = req.body.id;
+  await Book.findByIdAndUpdate(idBook, {title: req.body.title} );
   res.redirect("/books");
 };
 
 module.exports.delete = async (req, res) => {
-  var book_id = req.params.book_id;
-  await cloudinary.uploader.destroy("avatarCodersX/" + book_id);
-  db.get("books")
-    .remove({ book_id: book_id })
-    .write();
+  var id = req.params.id;
+  var book = await Book.findById(id);
+  var coverurl = book.coverUrl.split("/").pop();
+  await cloudinary.uploader.destroy("avatarCodersX/uploads/" + coverurl);
+  await Book.findByIdAndRemove(id)
   res.redirect("back");
 };

@@ -1,68 +1,48 @@
 const shortid = require("shortid");
 
-const db = require('../db');
+const Transaction = require("../models/transaction.model");
+const Book = require("../models/book.model");
+const User = require("../models/user.model");
 
-module.exports.index = (req, res) => {
-  var userId = req.signedCookies.userId;
-  console.log(userId);
-  var numberPage = Math.ceil(db.get('transactions').value().length / perPage);
-  var perPage = 10;
-  var page = parseInt(req.query.page) || 1;
-  
-  var start = (page - 1) * perPage;
-  var end = page * perPage;
-  
-  var transactions = db.get('transactions').value().filter(tran => {
-    return tran.user_id === userId;
-  });
-  res.render("./transactions/index", {
-    transactions: transactions.slice(start, end),
-    numberPage: numberPage,
-    titleLink: "transactions",
-    page: page
+
+module.exports.index = async(req, res) => {
+  if (res.locals.isAdmin) {
+    let transactions = await Transaction.find()
+    res.render("transactions/index", {
+      transactions: transactions
+    });
+    return;
+  }
+  let id = req.signedCookies.userId
+  let transactionFilterById = await Transaction.find({user_id: id})
+  res.render("transactions/index", {
+    transactions: transactionFilterById
   });
 };
 
-module.exports.create = (req, res) => {
+module.exports.create = async (req, res) => {
+  let result = await Promise.all([User.find(), Book.find(), Transaction.find()]);
   res.render("./transactions/create", {
-    transactions: db.get("transactions").value(),
-    users: db.get("users").value(),
-    books: db.get("books").value()
+    transactions: result[2],
+    users: result[0],
+    books: result[1]
   });
 };
 
-module.exports.postCreate = (req, res) => {
-  req.body.trans_id = shortid.generate();
+module.exports.postCreate = async(req, res) => {
   req.body.isComplete = false;
-  
-  db.get("transactions")
-    .push(req.body)
-    .write();
-
+  await Transaction.create(req.body);
   res.redirect("/transactions");
 };
 
-module.exports.delete = (req, res) => {
-  db.get("transactions")
-    .remove({ trans_id: req.params.trans_id })
-    .write();
+module.exports.delete = async (req, res) => {
+  var idTrans = req.params.id;
+  await Transaction.findByIdAndRemove(idTrans);
   res.redirect("back");
 };
 
-module.exports.isComplete = (req, res) => {
-  var trans_id = req.params.trans_id;
-  var trans = db.get('transactions')
-                .value();
-  var matchedTrans = trans.filter(tran => tran.trans_id.indexOf(trans_id) !== -1);
-  if(matchedTrans.length) {
-    db.get('transactions')
-      .find({ trans_id: trans_id })
-      .assign( { isComplete: true } )
-      .write();
-    res.redirect('/transactions');
-  }
-  else {
-    res.redirect('/transactions');
-    return;
-  }
+module.exports.isComplete = async (req, res) => {
+  var idTransaction = req.params.id;
+  await Transaction.findByIdAndUpdate(idTransaction, { isComplete: true });
+  res.redirect('/transactions');
 };

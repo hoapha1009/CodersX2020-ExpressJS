@@ -1,10 +1,10 @@
 extends ../layouts/common
 block content
   h1 Transactions management
-
-  div(style="color: blue")
-      h2 Transactions list
-
+  h2.d-flex.align-items-end.justify-content-between
+    span(style="color: green;") Transactions list
+    span(style="font-size: 24px")
+      a(href='/transactions/create', style="color: blue") Create a new User      
   table.table(style="text-align: left")
     tr
       th Transaction ID
@@ -14,17 +14,14 @@ block content
       th Delete
     each trans in transactions
       tr
-        td= trans.trans_id
+        td= trans.id
         td= trans.user_id
         td= trans.book_id
         td 
-          a(href="/transactions/" + trans.trans_id + "/complete") Hoàn thành
+          a(href="/transactions/" + trans.id + "/complete") Hoàn thành
             span(style="padding: 0 3px; color: yellow")= trans.isComplete === true ? "Yes" : "No"
         td 
-          a(href="/transactions/" + trans.trans_id + "/delete") Click
+          a(href="/transactions/" + trans.id + "/delete") Click
           
-  include ../layouts/pagination.pug
   
-  a(href="./transactions/create", style="color: green") 
-      h3 Add new transaction
 

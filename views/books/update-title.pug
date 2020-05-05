@@ -4,6 +4,6 @@ block content
   form.form(action="/books/update", method="post")
     label(for="title") New title:
     br  
-    input.form-control(type="text", hidden, name="book_id", value=book_id)
+    input.form-control(type="text", hidden, name="id", value=id)
     input.form-control#title(type="text", name="title") 
     button.btn.btn-primary Update

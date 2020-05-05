@@ -5,14 +5,17 @@ const bcrypt = require('bcrypt');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+var User = require("../models/user.model");
+
 module.exports.login = (req, res) => {
   res.render('auth/login');
 };
 
-module.exports.postLogin = (req, res) => {
+module.exports.postLogin = async (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
-  var user = db.get('users').find({ email: email }).value();
+  // var user = db.get('users').find({ email: email }).value();
+  var user = await User.findOne({ email: email });
   var errors = [];
   
   if (!user) {
@@ -23,11 +26,12 @@ module.exports.postLogin = (req, res) => {
     });
   }
   
-  bcrypt.compare(password, user.password, (err, result) => {
+  bcrypt.compare(password, user.password, async (err, result) => {
     if(!result) {
         var wrongLoginCount = user.wrongLoginCount;
         wrongLoginCount++;
-        db.get('users').find({email: email}).assign({wrongLoginCount: wrongLoginCount}).write();
+        user.wrongLoginCount = wrongLoginCount;
+        user.save();
         if(wrongLoginCount >=4 ) {
           res.send('<h1>Bạn đã nhập sai quá nhiều!<br>Vui lòng quay lại sau 10 phút!</h1>');
           const msg = {
@@ -55,14 +59,11 @@ module.exports.postLogin = (req, res) => {
         return;
     }
     else {
-        res.cookie('userId', user.user_id, {
+        res.cookie('userId', user.id, {
           signed: true
         });
-      
-        db.get('users')
-          .find({ email: email })
-          .assign({ wrongLoginCount: 0 })
-          .write();
+        user.wrongLoginCount = 0;
+        user.save();
         res.redirect('/books');
     }
   })

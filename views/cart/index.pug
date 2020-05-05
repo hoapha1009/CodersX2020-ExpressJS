@@ -1,26 +1,22 @@
 extends ../layouts/common
 block content
-  h1 Cart list
+  a(href='/books') Back
+  h1 Your Cart
   table.table
-    thead.bg-light
+    thead.thead-light
       tr
-        th Book cover
-        th Book title
-        th Number
+        th(scope='col') Book Cover
+        th(scope='col') Book Title 
+        th(scope='col') Action
     tbody
-      each cart in arrCart
+      if(cart &&  books)
+        each book in books
           tr
-            if cart.bookCover !== "undefined"
-              td.align-middle 
-                img(src=cart.bookCover, width='32px', height='32px', name="bookCover")
-            else
-              td.align-middle 
-                img(src=defaultCoverUrl, width='32px', height='32px', name="bookCover")
-            td.align-middle(name="titleBook")=cart.titleBook
-            td.align-middle(name="number")=cart.number
-            
-      tr
-        td
-        td
-          a.btn.btn-primary(href="/cart/rent") Rent
-        td
+            each item in cart
+              if book.id === item
+                td
+                  img(src= book.coverUrl ? book.coverUrl: 'https://ibf.org/site_assets/img/placeholder-book-cover-default.png', width='50px', height='50px')
+                td=book.title
+                td
+                  a(href=`/cart/delete/${book.id}`) Delete
+  a.btn.btn-primary(href='/cart/rent') Transaction

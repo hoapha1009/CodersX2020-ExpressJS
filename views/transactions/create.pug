@@ -11,14 +11,14 @@ block content
             td 
               select#userid_select(name="user_id")
                 each user in users
-                  option= user.user_id
-          tr
+                  option= user.id
+          tr        
             td
                 label Book ID:
             td  
                 select#bookid_select(name="book_id")
                   each book in books
-                    option= book.book_id 
+                    option= book.id 
           tr
             td
             td
