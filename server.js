@@ -4,7 +4,8 @@ const express = require("express");
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true});
+// mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true});
+mongoose.connect(process.env.URI,{ useUnifiedTopology: true ,useNewUrlParser: true} );
 
 var db = require('./db.json');
 var mainRoute = require('./routes/main.route');
@@ -32,8 +33,8 @@ app.use(sessionMiddleware);
 
 app.use('/', mainauthMiddleware.requireMainAuth, mainRoute);
 app.use('/books', booksRoute);
-app.use('/users', authMiddleware.requireAuth, usersRoute);
-app.use('/transactions', authMiddleware.requireAuth, transactionsRoute);
+app.use('/users', usersRoute);
+app.use('/transactions', transactionsRoute);
 app.use('/auth', authRoute);
 app.use('/cart', cartRoute);
 
