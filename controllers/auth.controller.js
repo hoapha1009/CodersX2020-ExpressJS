@@ -1,6 +1,4 @@
 const shortid = require("shortid");
-const db = require('../db');
-// const md5 = require('md5');
 const bcrypt = require('bcrypt');
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);

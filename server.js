@@ -11,7 +11,6 @@ const authRoute = require('./routes/auth.route.js');
 const authMiddleware = require("./middlewares/auth.middleware");
 const mainauthMiddleware = require("./middlewares/authmain.middleware");
 const sessionMiddleware = require("./middlewares/session.middleware");
-const countMiddleware = require("./middlewares/count-cookie.middleware");
 
 var mainRoute = require('./routes/main.route');
 var booksRoute = require('./routes/books.route');
