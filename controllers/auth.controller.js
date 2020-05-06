@@ -69,3 +69,9 @@ module.exports.postLogin = async (req, res) => {
   })
   
 };
+
+module.exports.logout = (req, res) => {
+  res.clearCookie('userId');
+  res.clearCookie('sessionId');
+  res.redirect('/auth/login');
+};

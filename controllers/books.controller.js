@@ -11,6 +11,8 @@ module.exports.index = async (req, res) => {
   var sessionId = req.signedCookies.sessionId;
   var books = await Book.find();
   var session = await Session.findById(sessionId);
+  if(session)
+    var cart = session.cart;
   var currentPage = req.query.page ? parseInt(req.query.page) : 1;
   var perPage = 10;
   var pageSize = Math.ceil(books.length / perPage );
@@ -19,7 +21,7 @@ module.exports.index = async (req, res) => {
 
   res.render('./books', {
     books: books, 
-    cart:session.cart,
+    cart:cart,
     defaultCoverUrl: defaultCoverUrl,
     pageSize,
     currentPage,

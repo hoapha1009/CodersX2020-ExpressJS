@@ -1,10 +1,8 @@
-const db = require('../db');
+const User = require("../models/user.model");
 
 module.exports.render = (req, res) => {
   var user_id = req.signedCookies.userId;
-  var user = db.get('users')
-               .find({ user_id: user_id })
-               .value();
+  var user = User.findById(user_id);
   res.render('./index', {
     user: user
   });
