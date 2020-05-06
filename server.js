@@ -37,7 +37,6 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(sessionMiddleware);
 
 app.use(express.static('public'));
-// app.use(countMiddleware);
 
 
 app.use('/', mainauthMiddleware.requireMainAuth, mainRoute);
