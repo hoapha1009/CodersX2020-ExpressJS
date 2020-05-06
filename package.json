@@ -38,5 +38,9 @@
     "glitch",
     "express"
   ],
-  "author": ""
+  "author": "",
+  "devDependencies": {
+    "install": "^0.13.0",
+    "nodemon": "^2.0.3"
+  }
 }

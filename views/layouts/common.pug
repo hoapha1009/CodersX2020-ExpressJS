@@ -15,6 +15,13 @@ html
           if !isAdmin
             a(class="nav-item nav-link", href="/transactions") Transactions
           a(class="nav-item nav-link", href="/cart") Cart
+          if !isLogin
+            a.nav-item.nav-link(href='/auth/login', style="color: blue") Login
+          else
+            .btn-group
+              button#Account.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')= user.name
+              .dropdown-menu.dropdown-menu-right(aria-labelledby='Account')
+                a.dropdown-item(href='/auth/logout', style="color: blue") Logout
     .container.py-3   
       block content
       block navigation

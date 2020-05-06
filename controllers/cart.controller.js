@@ -1,7 +1,6 @@
 const shortid = require("shortid");
 var cloudinary = require('cloudinary').v2
 
-const db = require('../db');
 var defaultCoverUrl = cloudinary.url('avatarCodersX/placeholder-book-cover-default_prhetk');
 var Transaction = require('../models/transaction.model')
 var Session = require('../models/session.model')
