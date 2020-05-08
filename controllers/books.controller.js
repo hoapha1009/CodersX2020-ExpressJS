@@ -7,7 +7,7 @@ var defaultCoverUrl = cloudinary.url('avatarCodersX/placeholder-book-cover-defau
 
 
 module.exports.index = async (req, res, next) => {
-  var a;
+  // var a;
   var sessionId = req.signedCookies.sessionId;
   var books = await Book.find();
   var session = await Session.findById(sessionId);
@@ -19,7 +19,7 @@ module.exports.index = async (req, res, next) => {
   var begin = (currentPage - 1) * perPage;
   var end = currentPage * perPage;
   try {
-      a.b();
+      // a.b();
       res.render('./books', {
         books: books, 
         cart:cart,
