@@ -1,8 +1,12 @@
 const express = require("express");
-const router = express.Router();
+var router = express.Router();
 
-const controller = require('../controllers/auth.controller');
+const controller = require("../controllers/books.controller");
 
-router.post('/', controller.postLogin);
-
+router.get("/", controller.getAll);
+router.post("/", controller.postCreate);
+router.get("/:id", controller.getOne);
+router.put("/:id", controller.putUpdate)
+router.patch("/:id", controller.patchUpdateOne)
+router.delete("/:id", controller.deleteId);
 module.exports = router;

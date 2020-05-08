@@ -1,10 +1,9 @@
-const db = require('../db');
+const User = require("../models/user.model");
 
 module.exports.requireMainAuth = (req, res, next) => {
-  var user = req.cookies.userId;
-  var admin = db.get('users').find({ isAdmin: true }).value();
-  if(admin.user_id === user)
+  var userId = User.findById(req.cookies.userId);
+  if(userId.isAdmin == true){
     res.locals.isAdmin = true;
-  
+  }
   next();
 }; 

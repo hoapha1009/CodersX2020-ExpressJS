@@ -6,7 +6,6 @@ const multer = require("multer");
 
 const db = require('../db');
 const controller = require('../controllers/books.controller');
-const countCookie = require('../middlewares/count-cookie.middleware');
 var upload = multer({ dest: './public/uploads/' });
 
 router.use(bodyParser.json());
