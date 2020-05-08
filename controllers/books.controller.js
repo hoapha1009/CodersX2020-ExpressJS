@@ -6,7 +6,8 @@ var Session = require('../models/session.model');
 var defaultCoverUrl = cloudinary.url('avatarCodersX/placeholder-book-cover-default_prhetk');
 
 
-module.exports.index = async (req, res) => {
+module.exports.index = async (req, res, next) => {
+  var a;
   var sessionId = req.signedCookies.sessionId;
   var books = await Book.find();
   var session = await Session.findById(sessionId);
@@ -17,15 +18,20 @@ module.exports.index = async (req, res) => {
   var pageSize = Math.ceil(books.length / perPage );
   var begin = (currentPage - 1) * perPage;
   var end = currentPage * perPage;
-
-  res.render('./books', {
-    books: books, 
-    cart:cart,
-    defaultCoverUrl: defaultCoverUrl,
-    pageSize,
-    currentPage,
-    titleLink: "books"
-  });
+  try {
+      a.b();
+      res.render('./books', {
+        books: books, 
+        cart:cart,
+        defaultCoverUrl: defaultCoverUrl,
+        pageSize,
+        currentPage,
+        titleLink: "books"
+      });
+  } catch (error) {
+    next(error);
+  }
+  
 };
 
 module.exports.getCreate = (req, res) => {
